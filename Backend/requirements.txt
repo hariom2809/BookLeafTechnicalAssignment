@@ -1,3 +1,5 @@
 django
 django-rest-framework
-psycopg
+psycopg2
+python-dotenv
+djangorestframework-simplejwt
