@@ -17,7 +17,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     role            = models.CharField(max_length=10, choices=UserRole.choices, default=UserRole.AUTHOR)
     is_active       = models.BooleanField(default=True)
     is_staff        = models.BooleanField(default=False)
-    joined_date     = models.DateTimeField(default=timezone.now)
+    joined_date     = models.DateField(default=timezone.now)
 
     USERNAME_FIELD  = "email"
     REQUIRED_FIELDS = []
