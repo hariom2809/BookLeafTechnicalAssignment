@@ -23,6 +23,10 @@ class User(AbstractBaseUser, PermissionsMixin):
     REQUIRED_FIELDS = []
     objects         = CustomUserManager()
 
+    @property
+    def name(self):
+        return f"{self.first_name} {self.last_name}"
+
     def save(self, *args, **kwargs):
         is_new = self.pk is None
 
