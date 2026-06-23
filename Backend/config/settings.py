@@ -30,12 +30,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'rest_framework',
     'accounts',
     'books',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -132,7 +134,8 @@ REST_FRAMEWORK = {
 CORS_ALLOW_CREDENTIALS = True
 
 CORS_ALLOWED_ORIGINS = [
-    os.getenv("FRONTEND_ORIGIN")
+    os.getenv("FRONTEND_ORIGIN", "http://localhost:5173"),
+    "http://127.0.0.1:5173",
 ]
 
 SIMPLE_JWT = {
