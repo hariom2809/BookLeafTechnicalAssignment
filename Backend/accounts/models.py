@@ -29,5 +29,5 @@ class User(AbstractBaseUser, PermissionsMixin):
         super().save(*args, **kwargs)
 
         if is_new and not self.author_id:
-            self.author_id = f"AUTH{self.pk:02d}"
+            self.author_id = f"AUTH{self.pk:03d}"
             super().save(update_fields=["author_id"])
