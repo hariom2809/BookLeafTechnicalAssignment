@@ -1,22 +1,6 @@
 import { useEffect, useState } from "react"
-import { getMyBooks } from "../services/userApi"
-
-const StatusBadge = ({ status }) => {
-  const map = {
-    published:    { label: "Published",     cls: "bg-green-500/15 text-green-400 border-green-500/20" },
-    cover_design: { label: "Cover Design",  cls: "bg-yellow-500/15 text-yellow-400 border-yellow-500/20" },
-    typesetting:  { label: "Typesetting",   cls: "bg-blue-500/15 text-blue-400 border-blue-500/20" },
-  }
-  const { label, cls } = map[status] ?? { label: status, cls: "bg-[#374151] text-[#9CA3AF] border-[#4B5563]" }
-  return (
-    <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border ${cls}`}>
-      {label}
-    </span>
-  )
-}
-
-const fmt = (val) =>
-  val != null ? `₹${Number(val).toLocaleString("en-IN", { minimumFractionDigits: 2 })}` : "—"
+import { getMyBooks } from "../services/booksApi"
+import BookCard from "../components/BookCard"
 
 export default function MyBooksPage() {
   const [books, setBooks] = useState([])
@@ -67,54 +51,10 @@ export default function MyBooksPage() {
       {}
       <div className="grid gap-4">
         {books.map((book) => (
-          <div
+          <BookCard
             key={book.id}
-            className="rounded-lg border border-[#374151] bg-[#1F2937] p-5 hover:border-[#4B5563] transition-colors"
-          >
-            {}
-            <div className="flex items-start justify-between gap-4 flex-wrap">
-              <div className="min-w-0">
-                <h2 className="text-base font-semibold text-[#F9FAFB] truncate">{book.title}</h2>
-                <p className="text-xs text-[#6B7280] mt-0.5 font-mono">ISBN: {book.isbn}</p>
-              </div>
-              <StatusBadge status={book.status} />
-            </div>
-
-            {}
-            <div className="mt-3 flex flex-wrap gap-x-5 gap-y-1 text-xs text-[#9CA3AF]">
-              {book.genre && <span>Genre: <span className="text-[#F9FAFB]">{book.genre}</span></span>}
-              {book.publication_date && (
-                <span>Published: <span className="text-[#F9FAFB]">{book.publication_date}</span></span>
-              )}
-              {book.mrp && <span>MRP: <span className="text-[#F9FAFB]">{fmt(book.mrp)}</span></span>}
-            </div>
-
-            {}
-            {book.status === "published" && (
-              <div className="mt-4 grid grid-cols-2 sm:grid-cols-4 gap-3">
-                {[
-                  { label: "Copies Sold",     value: book.total_copies_sold ?? 0 },
-                  { label: "Total Earned",     value: fmt(book.total_royalty_earned) },
-                  { label: "Royalty Paid",     value: fmt(book.royalty_paid) },
-                  { label: "Pending",          value: fmt(book.royalty_pending), highlight: Number(book.royalty_pending) > 0 },
-                ].map(({ label, value, highlight }) => (
-                  <div key={label} className="bg-[#111827] rounded-lg px-3 py-2.5">
-                    <p className="text-[10px] text-[#6B7280] uppercase tracking-wide">{label}</p>
-                    <p className={`text-sm font-semibold mt-0.5 ${highlight ? "text-yellow-400" : "text-[#F9FAFB]"}`}>
-                      {value}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            )}
-
-            {}
-            {book.status !== "published" && (
-              <div className="mt-3 text-xs text-[#6B7280] bg-[#111827] rounded px-3 py-2">
-                This book is currently in production. Royalty data will be available once published.
-              </div>
-            )}
-          </div>
+            book={book}
+          />
         ))}
       </div>
     </div>

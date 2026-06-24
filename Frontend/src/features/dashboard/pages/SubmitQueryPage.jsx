@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { getMyBooks, createTicket } from "../services/userApi"
+import { getMyBooks } from "../services/booksApi"
+import { createTicket } from "../services/ticketsApi"
 import Input from "../../../components/ui/Input"
 import Button from "../../../components/ui/Button"
 

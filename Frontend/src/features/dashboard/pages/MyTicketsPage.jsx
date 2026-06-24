@@ -1,21 +1,7 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { getMyTickets } from "../services/userApi"
-
-const StatusBadge = ({ status }) => {
-  const map = {
-    open:        { label: "Open",        cls: "bg-blue-500/15 text-blue-400 border-blue-500/20" },
-    in_progress: { label: "In Progress", cls: "bg-yellow-500/15 text-yellow-400 border-yellow-500/20" },
-    resolved:    { label: "Resolved",    cls: "bg-green-500/15 text-green-400 border-green-500/20" },
-    closed:      { label: "Closed",      cls: "bg-[#374151] text-[#9CA3AF] border-[#4B5563]" },
-  }
-  const { label, cls } = map[status] ?? { label: status, cls: "bg-[#374151] text-[#9CA3AF] border-[#4B5563]" }
-  return (
-    <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border ${cls}`}>
-      {label}
-    </span>
-  )
-}
+import { getMyTickets } from "../services/ticketsApi"
+import TicketCard from "../components/TicketCard"
 
 export default function MyTicketsPage() {
   const [tickets, setTickets] = useState([])
@@ -80,18 +66,10 @@ export default function MyTicketsPage() {
       {/* Ticket list */}
       <div className="grid gap-3">
         {tickets.map((ticket) => (
-          <div
+          <TicketCard
             key={ticket.id}
-            className="rounded-lg border border-[#374151] bg-[#1F2937] px-5 py-4 hover:border-[#4B5563] transition-colors"
-          >
-            <div className="flex items-start justify-between gap-4 flex-wrap">
-              <div className="min-w-0">
-                <p className="text-[11px] font-mono text-[#6B7280] mb-1">#{ticket.id}</p>
-                <h3 className="text-sm font-semibold text-[#F9FAFB] truncate">{ticket.subject}</h3>
-              </div>
-              <StatusBadge status={ticket.status} />
-            </div>
-          </div>
+            ticket={ticket}
+          />
         ))}
       </div>
     </div>

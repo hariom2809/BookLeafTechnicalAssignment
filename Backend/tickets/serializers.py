@@ -11,3 +11,9 @@ class ListTicketSerializer(serializers.ModelSerializer):
     class Meta:
         model = Ticket
         fields = ["id", "subject", "status"]
+
+class GetTicketSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Ticket
+        fields = "__all__"
+
