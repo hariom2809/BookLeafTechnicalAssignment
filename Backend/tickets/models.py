@@ -17,7 +17,7 @@ class Ticket(models.Model):
         ISBN_AND_METADATA_ISSUES            = "isbn_and_metadata_issues", "ISBN & Metadata Issues"
         PRINTING_AND_QUALITY                = "printing_and_quality"," Printing & Quality"
         DISTRIBUTION_AND_AVAILABILITY       = "distribution_and_availability", "Distribution & Availability"
-        BOOK_STATUS_AND_PRODUCTION_UPDATES  = "book_status_and_production_updates" "Book Status & Production Updates"
+        BOOK_STATUS_AND_PRODUCTION_UPDATES  = "book_status_and_production_updates", "Book Status & Production Updates"
         GENERAL_INQUERY                     = "general_inquery", "General Inquery"
 
     class TicketPriority(models.TextChoices):
@@ -39,7 +39,8 @@ class Ticket(models.Model):
     created_at      = models.DateTimeField(default=timezone.now)
 
 class TicketResponse(models.Model):
-    ticket      = models.ForeignKey(Ticket, on_delete=models.CASCADE, related_name="responses")
-    response    = models.TextField()
-    notes       = models.TextField(null=True, blank=True, max_length=250)
-    created_at  = models.DateTimeField(default=timezone.now)
+    ticket              = models.ForeignKey(Ticket, on_delete=models.CASCADE, related_name="responses")
+    response            = models.TextField()
+    ai_draft_response   = models.TextField(null=True, blank=True)
+    notes               = models.TextField(null=True, blank=True, max_length=250)
+    created_at          = models.DateTimeField(default=timezone.now)

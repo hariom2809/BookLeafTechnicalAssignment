@@ -22,7 +22,7 @@ const LoginForm = () => {
 
     try {
       await login(email, password)
-      navigate("/")
+      navigate("/dashboard")
     } catch (error) {
       setError("Login Failed")
     } finally {

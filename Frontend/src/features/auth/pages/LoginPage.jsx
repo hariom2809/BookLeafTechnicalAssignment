@@ -10,12 +10,6 @@ export default function LoginPage () {
       subtitle="Log in"
     >
       <LoginForm />
-      <p className="text-center text-sm text-[#F9FAFB] mt-6">
-        Don't have an account:
-        <Link to="/register" className="ml-1 text-blue-400 hover:text-blue-300">
-          Sign up
-        </Link>
-      </p>
     </AuthLayout>
   )
 }
