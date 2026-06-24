@@ -70,3 +70,28 @@ def classify_and_prioritize(subject, description):
         "category": data.get("category", "general_inquery"),
         "priority": data.get("priority", "medium"),
     }
+
+def generate_draft_response(ticket):
+    prompt = f"""
+    You are a Book Publishing Support Agent.
+
+    Subject:
+    {ticket.subject}
+
+    Description:
+    {ticket.description}
+
+    Category:
+    {ticket.ai_category}
+
+    Priority:
+    {ticket.ai_priority}
+
+    Write a professional customer support response.
+
+    Return only the response text.
+    """
+
+    response = model.generate_content(prompt)
+
+    return response.text.strip()

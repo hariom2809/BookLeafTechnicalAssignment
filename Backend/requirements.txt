@@ -5,3 +5,5 @@ python-dotenv
 djangorestframework-simplejwt
 django-cors-headers
 google-generativeai
+drf-spectacular
+django-filter
