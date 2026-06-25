@@ -57,7 +57,7 @@ For the overview of the all APIs you can refer to the swagger document
 
 at : [Swagger](https://bookleaf-backend-hw7y.onrender.com/api/docs/)
 
-![Swaager](docs/API.png)
+![Swagger](docs/API.png)
 
 ## Disclaimer
 
