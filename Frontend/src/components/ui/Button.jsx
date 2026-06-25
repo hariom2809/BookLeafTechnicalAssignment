@@ -1,8 +1,9 @@
-const Button = ({children, onClick, type="button", className=""}) => {
+const Button = ({children, onClick, type="button", className="", disabled=false}) => {
   return (
     <button
         type={type}
         onClick={onClick}
+        disabled={disabled}
         className={`
           py-3
           px-4

@@ -21,8 +21,13 @@ const LoginForm = () => {
     setError("")
 
     try {
-      await login(email, password)
-      navigate("/dashboard")
+      const user = await login(email, password)
+      const isAdmin = user?.role === "admin" || user?.is_staff
+      if (isAdmin) {
+        navigate("/admin/tickets")
+      } else {
+        navigate("/dashboard")
+      }
     } catch (error) {
       setError("Login Failed")
     } finally {

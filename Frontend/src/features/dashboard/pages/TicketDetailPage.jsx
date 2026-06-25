@@ -152,6 +152,29 @@ export default function TicketDetailPage() {
           </div>
         </div>
       </Card>
+
+      {ticket.responses?.length > 0 && (
+        <Card className="p-0 overflow-hidden">
+          <div className="border-b border-[#374151] px-6 py-4">
+            <h2 className="text-lg font-semibold text-[#F9FAFB]">Admin Responses</h2>
+          </div>
+          <div className="divide-y divide-[#374151]">
+            {ticket.responses.map((entry) => (
+              <div key={entry.id} className="px-6 py-4">
+                <p className="text-xs uppercase tracking-wide text-[#6B7280]">
+                  {formatDate(entry.created_at)}
+                </p>
+                <p className="mt-2 whitespace-pre-wrap text-sm leading-6 text-[#E5E7EB]">
+                  {entry.response}
+                </p>
+                {entry.notes && (
+                  <p className="mt-2 text-xs text-[#9CA3AF]">Notes: {entry.notes}</p>
+                )}
+              </div>
+            ))}
+          </div>
+        </Card>
+      )}
     </div>
   )
 }

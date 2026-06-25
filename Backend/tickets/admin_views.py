@@ -1,23 +1,35 @@
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import generics, status
+from rest_framework.permissions import IsAdminUser
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
+from .admin_serializers import (
+    AdminTicketDetailSerializer,
+    AdminTicketListSerializer,
+    AdminTicketUpdateSerializer,
+)
+from .filters import TicketFilter
 from .models import Ticket, TicketResponse
-from .admin_serializers import AdminTicketDetailSerializer, AdminTicketListSerializer
-from .permissions import IsAdminUser
 from .services.ai_service import generate_draft_response
 
 
 class AdminTicketListView(generics.ListAPIView):
     serializer_class = AdminTicketListSerializer
     permission_classes = [IsAdminUser]
+    filter_backends = [DjangoFilterBackend]
+    filterset_class = TicketFilter
     queryset = Ticket.objects.select_related("author").order_by("-created_at")
 
 
-class AdminTicketDetailView(generics.RetrieveAPIView):
-    serializer_class = AdminTicketDetailSerializer
+class AdminTicketDetailView(generics.RetrieveUpdateAPIView):
     permission_classes = [IsAdminUser]
     queryset = Ticket.objects.select_related("author").prefetch_related("responses")
+
+    def get_serializer_class(self):
+        if self.request.method in ("PUT", "PATCH"):
+            return AdminTicketUpdateSerializer
+        return AdminTicketDetailSerializer
 
 
 class GenerateDraftView(APIView):

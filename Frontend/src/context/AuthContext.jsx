@@ -10,7 +10,7 @@ export const AuthProvider = ({children}) => {
 
     const login = async (email, password) => {
         await loginUser(email, password)
-        await fetchCurrentUser()
+        return fetchCurrentUser()
     }
 
     const register = async (email, password) => {
@@ -27,8 +27,10 @@ export const AuthProvider = ({children}) => {
         try {
             const user = await getCurrentUser()
             setCurrentUser(user)
+            return user
         } catch (error) {
             setCurrentUser(null)
+            return null
         } finally {
             setLoading(false)
         }
