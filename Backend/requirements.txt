@@ -7,3 +7,4 @@ django-cors-headers
 google-generativeai
 drf-spectacular
 django-filter
+gunicorn
