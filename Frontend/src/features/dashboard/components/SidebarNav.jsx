@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom"
-import { ChevronIcon } from "../icons/dashboardIcons"
+import { ChevronIcon } from "../icons/DashboardIcons"
 
 export default function SidebarNav({ navItems, onNavigate }) {
   return (

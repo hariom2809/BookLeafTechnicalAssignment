@@ -1,4 +1,4 @@
-import { MenuIcon, LeafIcon } from "../icons/dashboardIcons"
+import { MenuIcon, LeafIcon } from "../icons/DashboardIcons"
 
 export default function MobileHeader({ onOpenSidebar }) {
   return (

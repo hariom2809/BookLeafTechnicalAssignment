@@ -1,4 +1,4 @@
-import { LogoutIcon, PlusIcon } from "../icons/dashboardIcons"
+import { LogoutIcon, PlusIcon } from "../icons/DashboardIcons"
 
 export default function SidebarFooter({
   onSubmitQuery,

@@ -1,7 +1,7 @@
 import {
   BooksIcon,
   TicketIcon,
-} from "../icons/dashboardIcons"
+} from "../icons/DashboardIcons"
 
 export const navItems = [
   {

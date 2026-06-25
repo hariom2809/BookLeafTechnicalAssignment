@@ -1,4 +1,4 @@
-import { CloseIcon, LeafIcon } from "../icons/dashboardIcons"
+import { CloseIcon, LeafIcon } from "../icons/DashboardIcons"
 
 export default function SidebarHeader({ onClose }) {
   return (
