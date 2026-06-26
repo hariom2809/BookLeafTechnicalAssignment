@@ -2,6 +2,7 @@
 
 ## Credentails Table
 
+***The services are deloyed on the Free tier plan on hosting services. So they might take some time to boot up as the server need some warmup time. Please consider this as non-negative***
 [Live Link](https://book-leaf-technical-assignment.vercel.app/login)
 
 ## Test User Credentials
