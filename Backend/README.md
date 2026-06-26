@@ -51,6 +51,12 @@ python manage.py migrate
 python manage.py seed_data
 ```
 
+## Environment Variable
+
+The all env variable are avaialble in the .env file you can refere 
+
+**.env.example**
+
 ## API Laer 
 
 For the overview of the all APIs you can refer to the swagger document 

@@ -1,16 +1,65 @@
-# React + Vite
+# Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The Frontend is mainly build from the Coding Agents (JLM, Claude, ChatGPT)
 
-Currently, two official plugins are available:
+## Assumptions:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Node.js version is 23 and above
+- **bun** is installed in system along with Node packages
+- Will use bun for the developement and deployment (bun is comparitively faster then other node package managers)
 
-## React Compiler
+## Installation steps:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+cd Frontend
+```
+```bash
+bun install
+```
+```bash
+bun run dev
+```
 
-## Expanding the ESLint configuration
+## Environment Variable
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+There is only one env varibale and it is for the passing the base url to the frontend to access APIs from backend 
+you can refer the file 
+
+**.env.example**
+
+## UI overview
+
+- **Login**
+![Login](docs/Login.png)
+
+### Author 
+
+- MyBook and Book
+
+![MyBook](docs/MyBook.png)
+
+![Book](docs/Book.png)
+
+- MyTicket and Ticket
+
+![MyTicket](docs/MyTicket.png)
+
+![Ticket](docs/Ticket.png)
+
+- Submit Query
+
+![Submit Query](docs/SubmitQuery.png)
+
+### Admin
+
+- Admin Ticket
+
+![Admin Ticket](docs/AdminTicket.png)
+
+- Response Window
+
+![Response Window](docs/Response.png)
+
+## Disclaimer
+
+As the most of the part is build with AI so it has data calling frm the backend with the help of fetch of useEffect but that cna be optimised with thte **Tanstack Query**. I haven't paid any attention on the optimising the wokring and all queries. As it is an assignment. For the nvigating the pages It has been usign the href may be as the sub pages are taking time to get load but if we use the tanstack query this was not the porblem as data got cached at the time of fetch 
